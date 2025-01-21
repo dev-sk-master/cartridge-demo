@@ -7,6 +7,7 @@
     "@cartridge/controller": "^0.5.5",
     "@starknet-react/chains": "^3.1.2",
     "@starknet-react/core": "^3.7.1",
+    "ajv": "^8.17.1",
     "cra-template": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
