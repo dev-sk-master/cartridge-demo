@@ -21,7 +21,7 @@ A demo application available at:
 3. Controller registers session public key and returns account info - HELP
 
     Expecting below function to be used to register, but right now ownerGuid and expiresAt etc is not available which has to be returned from SessionController.
-    
+
     CartridgeSessionAccount.new_as_registered(
         RPC_URL,
         sessionSigner.privateKey,
@@ -35,7 +35,7 @@ A demo application available at:
         );
 
 4. Create controller session account on client - TODO
-5. Store account info in Telegram cloud storage - TODO
+5. Store account info - TODO
 
 
 
