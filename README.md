@@ -9,24 +9,7 @@ A demo application available at:
 
 1. **Generate local Stark key pair and store private key** - DONE
 
-2. **Open session controller page with user's public key** - HELP
-
-    `ControllerConnector` opens a popup to login/signup and connects an account.
-
-    ```javascript
-    const connector = new ControllerConnector({
-        policies,
-        rpc: 'https://api.cartridge.gg/x/starknet/sepolia',
-    });
-    ```
-
-    However, to use a session controller, I tried with `SessionConnector`, but it fails.
-
-    ```javascript
-    import SessionConnector from "@cartridge/connector/session";
-    ```
-
-    Note: `SessionController` import is not available in the installed version `"@cartridge/controller": "^0.5.5"`
+2. **Open session controller page with user's public key** - DONE
 
 3. **Controller registers session public key and returns account info** - HELP
 
