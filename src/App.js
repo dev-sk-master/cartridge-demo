@@ -22,6 +22,8 @@ function App() {
       <ConnectWallet />
       <TransferEth />
     </StarknetProvider>
+
+    <h4>Demo Setup</h4>
     <AccountProvider>
       <StarknetApp />
     </AccountProvider>
