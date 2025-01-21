@@ -1,14 +1,31 @@
 import { StarknetProvider } from './context/StarknetProvider'
 import { ConnectWallet } from './components/ConnectWallet'
 import { TransferEth } from './components/TransferEth'
+import { useAccount, AccountProvider } from "./hooks/useAccount";
 
+function StarknetApp() {
+
+  const { account, openConnectionPage, address, clearSession, username } = useAccount();
+  return (
+    <>
+      <button onClick={openConnectionPage}>Connect</button>
+    </>
+  )
+}
 
 function App() {
-  return (
+
+
+
+  return (<>
     <StarknetProvider>
       <ConnectWallet />
       <TransferEth />
     </StarknetProvider>
+    <AccountProvider>
+      <StarknetApp />
+    </AccountProvider>
+  </>
   );
 }
 

@@ -59,7 +59,6 @@ A demo application available at:
 ```bash
 npm install --legacy-peer-deps
 
-```bash
 npm start
 
 
