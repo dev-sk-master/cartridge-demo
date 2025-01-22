@@ -116,7 +116,7 @@ export const AccountProvider = ({ children }) => {
             sessionSigner.privateKey,
             accountStorage.address,
             accountStorage.ownerGuid,
-            Dojo.cairoShortStringToFelt("SN_MAIN"),
+            Dojo.cairoShortStringToFelt("SN_SEPOLIA"),
             {
                 expiresAt: Number(accountStorage.expiresAt),
                 policies: POLICIES,
