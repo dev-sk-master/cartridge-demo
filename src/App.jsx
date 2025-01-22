@@ -24,12 +24,12 @@ function StarknetApp() {
     }
 
     try {
-     
+    console.log(account)
       const result = await account.execute_from_outside([
         {
           contractAddress: '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d',
           entrypoint: 'transfer',
-          calldata: ['0x05738bb2accbe5fdab483e6a682736c8c00a6913ed984d7ba17d9dd3f2714f52', '0x1'],
+          calldata: ['0x05738bb2accbe5fdab483e6a682736c8c00a6913ed984d7ba17d9dd3f2714f52', '0x0'],
         }
       ])
 
@@ -44,6 +44,7 @@ function StarknetApp() {
 
       console.log(`Claimed `);
     } catch (error) {
+      console.log(error)
       if (error.toString().includes("session/not-registered")) {
         // If the user is not registered, open the connection page
         openConnectionPage();
@@ -51,7 +52,7 @@ function StarknetApp() {
         console.log('no fund')
       } else {
         console.log("Failed to execute");
-        console.error(error);
+        console.log(error);
       }
     }
   };
