@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.26.3",
     "@cartridge/connector": "^0.5.5",
     "@cartridge/controller": "^0.5.5",
     "@dojoengine/torii-wasm": "^1.0.11",
