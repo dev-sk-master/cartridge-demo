@@ -19,7 +19,7 @@ A demo application available at:
 
 6. **Sign Transaction** - HELP
 
-    Example transaction
+    **Example transaction:** 
 
     ```javascript    
     await account.execute_from_outside([
@@ -31,11 +31,14 @@ A demo application available at:
       ]);
     ```
 
-    **Error message** 
+    **Error message:** 
     paymaster not supported for this call or insufficient credits
 
+    
      ```javascript 
      export const RPC_URL = "https://api.cartridge.gg/x/starknet/mainnet?paymaster=false";
+
+     export const ACTIONS_ADDRESS = "0x70fc96f845e393c732a468b6b6b54d876bd1a29e41a026e8b13579bf98eec8f";
 
     CartridgeSessionAccount.new_as_registered(
                 RPC_URL,
