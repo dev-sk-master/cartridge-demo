@@ -19,27 +19,30 @@ A demo application available at:
 
 6. **Sign Transaction** - HELP
 
-    STRK token transfer example
+    Example transaction
 
     ```javascript    
-    const result = await account.execute_from_outside([
+    await account.execute_from_outside([
         {
-          contractAddress: '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d',
-          entrypoint: 'transfer',
-          calldata: ['0x05738bb2accbe5fdab483e6a682736c8c00a6913ed984d7ba17d9dd3f2714f52', '0x0'],
-        }
-      ])
+          calldata: [],
+          entrypoint: "claim",
+          contractAddress: ACTIONS_ADDRESS,
+        },
+      ]);
     ```
 
+    **Error message** 
+    paymaster not supported for this call or insufficient credits
+
      ```javascript 
-     export const RPC_URL = "https://api.cartridge.gg/x/starknet/sepolia?paymaster=false";
+     export const RPC_URL = "https://api.cartridge.gg/x/starknet/mainnet?paymaster=false";
 
     CartridgeSessionAccount.new_as_registered(
                 RPC_URL,
                 sessionSigner.privateKey,
                 accountStorage.address,
                 accountStorage.ownerGuid,
-                Dojo.cairoShortStringToFelt("SN_SEPOLIA"),
+                Dojo.cairoShortStringToFelt("SN_MAIN"),
                 {
                     expiresAt: Number(accountStorage.expiresAt),
                     policies: POLICIES,
