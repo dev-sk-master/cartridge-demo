@@ -9,12 +9,24 @@ import {
   TORII_URL,
   WORLD_ADDRESS,
 } from "./constants";
-import { number } from "starknet";
 
+import { useState, useEffect, useRef } from "react";
 
 function StarknetApp() {
   const { account, openConnectionPage, address, clearSession, username } = useAccount();
+  const [formData, setFormData] = useState({ recipient: '', amount: '' })
   console.log(account)
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // Update the state
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value, // Update the appropriate field
+    }));
+  };
 
   // Add this new function to handle claiming tokens
   const handleTransfer = async () => {
@@ -24,23 +36,33 @@ function StarknetApp() {
     }
 
     try {
-      console.log(account)
-      // const result = await account.execute_from_outside([
-      //   {
-      //     contractAddress: '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d',
-      //     entrypoint: 'transfer',
-      //     calldata: ['0x05738bb2accbe5fdab483e6a682736c8c00a6913ed984d7ba17d9dd3f2714f52', '0x0'],
-      //   }
-      // ])
+      const value = parseFloat(formData.amount); // Original value
+      const decimals = 18; // Assuming 18 decimal places for precision
+
+      // Convert to the smallest unit
+      const smallestUnit = BigInt(value * 10 ** decimals); // Convert to BigInt to handle large numbers
+
+      // Convert to hexadecimal
+      const amountInHex = "0x" + smallestUnit.toString(16);
 
 
-      await account.execute_from_outside([
+
+      const result = await account.execute_from_outside([
         {
-          calldata: [],
-          entrypoint: "claim",
-          contractAddress: ACTIONS_ADDRESS,
-        },
-      ]);
+          contractAddress: '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d',
+          entrypoint: 'transfer',
+          calldata: [formData.recipient, amountInHex],
+        }
+      ])
+
+
+      // await account.execute_from_outside([
+      //   {
+      //     calldata: [],
+      //     entrypoint: "claim",
+      //     contractAddress: ACTIONS_ADDRESS,
+      //   },
+      // ]);
 
       console.log(`Claimed `);
     } catch (error) {
@@ -59,13 +81,24 @@ function StarknetApp() {
 
   return (
     <>
-
       <button onClick={openConnectionPage}>Connect</button>
 
       <p>Address: {address}</p>
       <p>Username: {username}</p>
 
       <button onClick={clearSession}>Disconnect</button>
+
+      <br /><br />
+
+      Recipient (in Hex):&nbsp;
+      <input type='text' name="recipient"
+        value={formData.recipient}
+        onChange={handleChange} /><br /><br />
+
+      Amount:&nbsp;
+      <input type='text' name="amount"
+        value={formData.amount}
+        onChange={handleChange} /><br /><br />
 
       <button
         onClick={handleTransfer}

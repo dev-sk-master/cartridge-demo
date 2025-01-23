@@ -22,30 +22,29 @@ A demo application available at:
     **Example transaction:** 
 
     ```javascript    
-    await account.execute_from_outside([
+    const result = await account.execute_from_outside([
         {
-          calldata: [],
-          entrypoint: "claim",
-          contractAddress: ACTIONS_ADDRESS,
-        },
-      ]);
+          contractAddress: '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d',
+          entrypoint: 'transfer',
+          calldata: [formData.recipient, formData.amount],
+        }
+      ])
     ```
 
     **Error message:** 
-    paymaster not supported for this call or insufficient credits
+    
 
     
      ```javascript 
-     export const RPC_URL = "https://api.cartridge.gg/x/starknet/mainnet?paymaster=false";
+     export const RPC_URL = "https://api.cartridge.gg/x/starknet/sepolia?paymaster=false";
 
-     export const ACTIONS_ADDRESS = "0x70fc96f845e393c732a468b6b6b54d876bd1a29e41a026e8b13579bf98eec8f";
 
     CartridgeSessionAccount.new_as_registered(
                 RPC_URL,
                 sessionSigner.privateKey,
                 accountStorage.address,
                 accountStorage.ownerGuid,
-                Dojo.cairoShortStringToFelt("SN_MAIN"),
+                Dojo.cairoShortStringToFelt("SN_SEPOLIA"),
                 {
                     expiresAt: Number(accountStorage.expiresAt),
                     policies: POLICIES,
