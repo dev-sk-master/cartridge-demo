@@ -36,7 +36,7 @@ A demo application available at:
 
     
      ```javascript 
-     export const RPC_URL = "https://api.cartridge.gg/x/starknet/sepolia";
+     export const RPC_URL = "https://api.cartridge.gg/x/starknet/sepolia?paymaster=false";
 
 
     CartridgeSessionAccount.new_as_registered(
