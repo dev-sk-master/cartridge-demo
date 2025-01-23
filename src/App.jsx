@@ -25,22 +25,22 @@ function StarknetApp() {
 
     try {
       console.log(account)
-      const result = await account.execute_from_outside([
-        {
-          contractAddress: '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d',
-          entrypoint: 'transfer',
-          calldata: ['0x05738bb2accbe5fdab483e6a682736c8c00a6913ed984d7ba17d9dd3f2714f52', '0x0'],
-        }
-      ])
-
-
-      // await account.execute_from_outside([
+      // const result = await account.execute_from_outside([
       //   {
-      //     calldata: [],
-      //     entrypoint: "claim",
-      //     contractAddress: ACTIONS_ADDRESS,
-      //   },
-      // ]);
+      //     contractAddress: '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d',
+      //     entrypoint: 'transfer',
+      //     calldata: ['0x05738bb2accbe5fdab483e6a682736c8c00a6913ed984d7ba17d9dd3f2714f52', '0x0'],
+      //   }
+      // ])
+
+
+      await account.execute_from_outside([
+        {
+          calldata: [],
+          entrypoint: "claim",
+          contractAddress: ACTIONS_ADDRESS,
+        },
+      ]);
 
       console.log(`Claimed `);
     } catch (error) {
