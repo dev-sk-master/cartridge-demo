@@ -1,4 +1,4 @@
-import { StarknetProvider } from './context/StarknetProvider'
+//import { StarknetProvider } from './context/StarknetProvider'
 import { ConnectWallet } from './components/ConnectWallet'
 import { TransferEth } from './components/TransferEth'
 import { useAccount, AccountProvider } from "./hooks/useAccount";
