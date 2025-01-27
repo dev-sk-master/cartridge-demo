@@ -33,6 +33,6 @@ export const POLICIES = [
   {
     target: "0x02d2a4804f83c34227314dba41d5c2f8a546a500d34e30bb5078fd36b5af2d77",
     method: "set_bet",
-    description: "set_bet",
+    description: "Set Bet",
   }
 ];
