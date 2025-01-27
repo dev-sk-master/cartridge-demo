@@ -79,15 +79,15 @@ function StarknetApp() {
     }
   };
 
-   // Add this new function to handle claiming tokens
-   const handleTransaction = async () => {
+  // Add this new function to handle claiming tokens
+  const handleTransaction = async () => {
     if (!account) {
       openConnectionPage();
       return;
     }
 
     try {
-     
+
       const result = await account.execute_from_outside([
         {
           contractAddress: '0x02d2a4804f83c34227314dba41d5c2f8a546a500d34e30bb5078fd36b5af2d77',
@@ -99,7 +99,7 @@ function StarknetApp() {
 
       console.log(`Done `);
     } catch (error) {
-      console.log(error)     
+      console.log(error)
     }
   };
 
@@ -128,10 +128,10 @@ function StarknetApp() {
         onClick={handleTransfer}
       > Transfer  </button>
 
-<br /><br />
-<button
+      <br /><br />
+      <button
         onClick={handleTransaction}
-      > Tx Check  </button>
+      > Tx Check  - Set bet</button>
     </>
   )
 }
