@@ -20,49 +20,80 @@ A demo application available at:
 6. **Sign Transaction** - HELP
 
     ```javascript
-    export const POLICIES = [  
-        {
-            target:
-            "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d",
-            method: "transfer",
-            description: "Transfer",
+    export const ETH_TOKEN_ADDRESS =
+    '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'
+
+    export const EXAMPLE_CONTRACT_ADDRESS = '0x02d2a4804f83c34227314dba41d5c2f8a546a500d34e30bb5078fd36b5af2d77'
+
+    // Define session policies
+    export const POLICIES = {
+    contracts: {
+        [ETH_TOKEN_ADDRESS]: {
+        methods: [
+            {
+            name: "approve",
+            entrypoint: "approve",
+            description: "Approve spending of tokens",
+            },
+            { name: "transfer", entrypoint: "transfer" },
+        ],
         },
-    ];
+        [EXAMPLE_CONTRACT_ADDRESS]: {
+        methods: [
+            { name: "set_bet", entrypoint: "set_bet", description: "Set Bet" },
+
+        ],
+        }
+    },
+    }
     ```
 
     **Example transaction:** 
 
     ```javascript    
-    const result = await account.execute_from_outside([
-        {
-          contractAddress: '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d',
-          entrypoint: 'transfer',
-          calldata: [recipient, amount],
-        }
-      ])
+    const result = await account.execute([
+          {
+            contractAddress: '0x02d2a4804f83c34227314dba41d5c2f8a546a500d34e30bb5078fd36b5af2d77',
+            entrypoint: 'set_bet',
+            calldata: [],
+          },
+        ]);
     ```
 
     **Error message:** 
-    ```
-    Error: Session policy not allowed error: Not allowed to call method selector `0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e` on contract `0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d`
+    ```   
+        error: {code: 63, message: "An unexpected error occurred",…}
+        code: 63
+        data: "Transaction must commit to pay a positive amount on fee."
+        message: "An unexpected error occurred"
+        id: 1
+        jsonrpc: "2.0"
     ```
 
     
      ```javascript 
-     export const RPC_URL = "https://api.cartridge.gg/x/starknet/sepolia?paymaster=false";
+    const connector = new SessionConnector({
+        policies: POLICIES,
+        rpc: RPC_URL,
+        chainId: constants.StarknetChainId.SN_SEPOLIA,
+        redirectUrl: REDIRECT_URI,
+    });
+
+    const provider = jsonRpcProvider({
+        rpc: () => ({ nodeUrl: RPC_URL }),
+    });
 
 
-    CartridgeSessionAccount.new_as_registered(
-                RPC_URL,
-                sessionSigner.privateKey,
-                accountStorage.address,
-                accountStorage.ownerGuid,
-                Dojo.cairoShortStringToFelt("SN_SEPOLIA"),
-                {
-                    expiresAt: Number(accountStorage.expiresAt),
-                    policies: POLICIES,
-                }
-            );
+    <StarknetConfig
+        autoConnect
+        chains={[mainnet, sepolia]}
+        provider={provider}
+        connectors={[connector]}
+        explorer={starkscan}
+    >
+        {children}
+    </StarknetConfig>
+
      ```
 
 ---

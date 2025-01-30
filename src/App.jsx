@@ -1,14 +1,14 @@
-//import { StarknetProvider } from './context/StarknetProvider'
+import { StarknetProvider } from './context/StarknetProvider'
 import { ConnectWallet } from './components/ConnectWallet'
 import { TransferEth } from './components/TransferEth'
-import { useAccount, AccountProvider } from "./hooks/useAccount";
-import {
-  ACTIONS_ADDRESS,
-  RELAY_URL,
-  RPC_URL,
-  TORII_URL,
-  WORLD_ADDRESS,
-} from "./constants";
+// import { useAccount, AccountProvider } from "./hooks/useAccount";
+// import {
+//   ACTIONS_ADDRESS,
+//   RELAY_URL,
+//   RPC_URL,
+//   TORII_URL,
+//   WORLD_ADDRESS,
+// } from "./constants";
 
 import { useState, useEffect, useRef } from "react";
 
@@ -141,15 +141,15 @@ function App() {
 
 
   return (<>
-    {/* <StarknetProvider>
+    <StarknetProvider>
       <ConnectWallet />
       <TransferEth />
-    </StarknetProvider> */}
+    </StarknetProvider>
 
-    <h4>Demo Setup</h4>
+    {/* <h4>Demo Setup</h4>
     <AccountProvider>
       <StarknetApp />
-    </AccountProvider>
+    </AccountProvider> */}
   </>
   );
 }
