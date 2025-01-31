@@ -13,7 +13,7 @@ import { TransferEth } from './components/TransferEth'
 import { useState, useEffect, useRef } from "react";
 
 function StarknetApp() {
-  const { account, openConnectionPage, address, clearSession, username } = useAccount();
+  //const { account, openConnectionPage, address, clearSession, username } = useAccount();
   const [formData, setFormData] = useState({ recipient: '', amount: '' })
   console.log(account)
 

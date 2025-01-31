@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect, useMemo } from '
 import * as Dojo from "@dojoengine/torii-wasm";
 import { KEYCHAIN_URL, POLICIES, REDIRECT_URI, RPC_URL } from "../constants";
 import encodeUrl from "encodeurl";
-import { CartridgeSessionAccount } from "@cartridge/account-wasm/session";
+//import { CartridgeSessionAccount } from "@cartridge/account-wasm/session";
 
 import { Account, constants, ec, json, stark, RpcProvider, hash, CallData } from 'starknet';
 
@@ -109,7 +109,7 @@ export const AccountProvider = ({ children }) => {
 
     const account = useMemo(() => {
         if (!accountStorage || !sessionSigner) return;
-       
+
         return CartridgeSessionAccount.new_as_registered(
             RPC_URL,
             sessionSigner.privateKey,
