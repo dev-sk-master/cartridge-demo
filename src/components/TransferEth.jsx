@@ -78,8 +78,8 @@ export const TransferEth = () => {
 
       <br />
       <h2>Transfer ETH</h2>
-      <button onClick={() => execute('0x1C6BF52634000')} disabled={submitted}>
-        Transfer 0.005 ETH
+      <button onClick={() => execute('0x5AF3107A4000')} disabled={submitted}>
+        Transfer 0.001 ETH
       </button>
       {txnHash && (
         <p>
