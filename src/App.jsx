@@ -144,9 +144,13 @@ function App() {
 
   return (<>
     {/* <StarknetCartridgeComponent /> */}
-    Network: {network}
-    <br/>
+
     <StarknetProvider>
+      <h4>Current Network: {network}</h4>
+
+      <label>
+        Select Network:&nbsp;
+      </label>
       <select
         onChange={(e) => setNetwork(e.target.value)}
         style={{ marginBottom: "10px" }}
