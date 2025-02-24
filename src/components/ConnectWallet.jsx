@@ -9,6 +9,7 @@ export function ConnectWallet() {
 
     const { disconnect } = useDisconnect()
     const { address } = useAccount()
+    console.log('address',address)
 
     const controller = connectors[0]
     const [username, setUsername] = useState()

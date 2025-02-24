@@ -1,6 +1,6 @@
 import { useAccount, useExplorer } from '@starknet-react/core'
 import { useCallback, useState } from 'react'
-import { ETH_TOKEN_ADDRESS, EXAMPLE_CONTRACT_ADDRESS } from "../constants";
+import { ETH_TOKEN_ADDRESS, EXAMPLE_CONTRACT_ADDRESS, POLICIES } from "../constants";
 
 // const ETH_CONTRACT =
 //   '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'
@@ -50,7 +50,7 @@ export const TransferEth = () => {
           {
             contractAddress: EXAMPLE_CONTRACT_ADDRESS,
             entrypoint: 'set_bet',
-            calldata: [],
+            calldata: []
           },
         ]);
 
